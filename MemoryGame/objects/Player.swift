@@ -6,13 +6,19 @@
 //
 
 import Foundation
+
 class Player : Codable{
     var name : String
     var moves : Int
     var gameDate : String
-    init(name: String?, moves: Int?) {
-        self.name = (name ?? "player")!
-        self.moves = (moves ?? -1)
+    var gameMode : Int
+    var lat : Double?
+    var lon  : Double?
+    
+    init(name: String?, moves: Int?, gameMode: Int?) {
+        self.gameMode = gameMode ?? 0
+        self.name = name ?? "player"
+        self.moves = moves ?? -1
         self.gameDate = Date().getTodayString()
     }
     
@@ -24,18 +30,34 @@ class Player : Codable{
         return strMoves
     }
     
+    func getGameMode() -> GAME_MODE! {
+        return GAME_MODE(rawValue: GAME_MODE.RawValue(self.gameMode))
+    }
     
-    public var description: String { return "Player:{name: \(String(describing: name)), number of moves: \((strMoves())), GameEndTime: \(String(describing: self.gameDate))" }
+    func setLocation(lat : Double, lon : Double) {
+        self.lat = lat
+        self.lon = lon
+        print("\(self.name) location is [\(String(describing: self.lat)),\(String(describing: self.lon))]")
+    }
+    
+    public var description: String { return "Player:{name: \(String(describing: name)), numberOfMoves: \((strMoves())), GameTime: \(String(describing: self.gameDate)), gameMode: \(String(describing: getGameMode() ?? GAME_MODE.easy))" }
+    }
 
-}
-
+//Mark: comparable - by game mode then by moves
 extension Player: Comparable {
     static func < (lhs: Player, rhs: Player) -> Bool {
-        return lhs.moves < rhs.moves
+        if lhs.gameMode == rhs.gameMode {
+            return lhs.moves > rhs.moves
+        } else {
+            return lhs.gameMode < rhs.gameMode
+        }
     }
 
     static func == (lhs: Player, rhs: Player) -> Bool {
-        return lhs.moves == rhs.moves
+        if(lhs.gameMode == rhs.gameMode) {
+            return lhs.moves == rhs.moves
+        }
+        return false
     }
 }
 

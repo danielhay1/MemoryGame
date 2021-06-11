@@ -1,3 +1,4 @@
+
 //
 //  winnerViewController.swift
 //  MemoryGame
@@ -9,14 +10,15 @@ import UIKit
 
 class WinnerViewController: UIViewController {
     let preference = myPreference()
-    @IBOutlet weak var movesLbl: UILabel!
-    
+    @IBOutlet weak var winnerVC_Lbl_gameMode: UILabel!
+    @IBOutlet weak var winnerVC_Lbl_moves: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         if let player : Player = preference.decodePlayer(preference_name: preference.currentPlayer){
-            movesLbl.text = "Number of moves: \(String(describing: player.moves))"
+            winnerVC_Lbl_moves.text = "Number of moves: \(String(describing: player.moves))"
+            winnerVC_Lbl_gameMode.text = "Game mode: \(String(describing: player.getGameMode() ?? GAME_MODE.easy))"
         } else {
-            movesLbl.text = "Number of moves: NA"
+            winnerVC_Lbl_moves.text = "Number of moves: NA"
         }
     }
     

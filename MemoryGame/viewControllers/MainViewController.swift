@@ -10,13 +10,20 @@ import UIKit
 class MainViewController: UIViewController {
 
     @IBOutlet weak var main_BTN_play: CustomButton!
-
     @IBOutlet weak var main_BTN_scoreboard: CustomButton!
-        
     @IBOutlet weak var main_TF_playername: UITextField!
+    
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    
     var preference = myPreference()
+    var gameMode = GAME_MODE.easy
     override func viewDidLoad() {
         super.viewDidLoad()
+        //for i in 1...10 {
+        //    automationAddPlayersByTopTenRule(name: "easypizzy_\(i)", moves: 40, gameMode: GAME_MODE.easy.rawValue)
+        //}
+        preference.printAllPlayers()
+        //preference.deleteAllPlayersRecord()
         // Do any additional setup after loading the view.
     }
 
@@ -36,10 +43,10 @@ class MainViewController: UIViewController {
         if playerName == "" {
             playerName = "player"
         }
-        let player = Player(name: playerName ,moves: nil)
+        let player = Player(name: playerName ,moves: nil, gameMode: gameMode.rawValue)
         preference.encodePlayer(player: player, preference_name: preference.currentPlayer)
+        print("Starting game: [Gamemode:\(self.gameMode), Player name:\(String(describing: playerName))]" )
     }
-    
     
     
     @IBAction func scoreboardBtnClicked() {
@@ -52,6 +59,19 @@ class MainViewController: UIViewController {
         present(vc, animated: true, completion: nil)
     }
     
+    @IBAction func gameModeSelect(_ sender: Any) {
+        switch segmentedControl.selectedSegmentIndex {
+        case 0:
+            self.gameMode = GAME_MODE.easy.self
+        case 1:
+            self.gameMode = GAME_MODE.normal.self
+        case 2:
+            self.gameMode = GAME_MODE.hard.self
+        default:
+            self.gameMode = GAME_MODE.easy.self
+            break;
+        }
+    }
 }
 
 

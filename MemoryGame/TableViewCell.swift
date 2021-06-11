@@ -9,6 +9,11 @@ import UIKit
 
 class TableViewCell: UITableViewCell {
 
+    @IBOutlet weak var cell_LBL_playerName: UILabel!
+    @IBOutlet weak var cell_LBL_gameMode: UILabel!
+    @IBOutlet weak var cell_LBL_timeStamp: UILabel!
+    @IBOutlet weak var cell_LBL_moves: UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

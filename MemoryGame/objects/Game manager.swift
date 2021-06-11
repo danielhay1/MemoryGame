@@ -7,11 +7,14 @@
 
 import Foundation
 
-class GameManager {
+public enum GAME_MODE : Int {
+    case easy, normal, hard
+}
 
+class GameManager {
     private let CARD_IMG_PRFIX_NAME = "superhero-"
     private let BLANK_CARD_IMG_NAME = "blank_card"
-    private let UNIQUE_CARDS_AMOUNT = 8
+    private var uniqeCardAmount = 8
     private var cardPack : [Card] = []
     private var cardStrImages : [String] = []
     private var tags : [Int]!
@@ -19,18 +22,30 @@ class GameManager {
     var isInRound : Bool!
     private var roundCard1 : Card?
     private var roundCard2 : Card?
-    
-    init(tags: [Int]) {
+    private var gameMode : Int
+        
+    init(tags: [Int], gameMode : Int?) {
         print("************** INIT GAME MANAGER **************")
+        self.gameMode = gameMode ?? 0
+        self.setGameMode(gameMode: GAME_MODE(rawValue: self.gameMode) ?? GAME_MODE.easy)
         self.tags = tags
         self.moves = 0
-        self.initCardPack()
         self.isInRound = false
+        self.initCardPack()
+    }
+    
+    private func setGameMode(gameMode : GAME_MODE) {
+        if gameMode == GAME_MODE.normal {
+            uniqeCardAmount = 10
+        } else if gameMode == GAME_MODE.hard {
+            uniqeCardAmount = 12
+        }
+        print("gameMode: \(gameMode)")
     }
     
     func initCardPackImages() {
         for _ in 1...2 {
-            for i in 1...UNIQUE_CARDS_AMOUNT {
+            for i in 1...uniqeCardAmount {
                 cardStrImages.append("\(CARD_IMG_PRFIX_NAME)\(i)")
             }
         }

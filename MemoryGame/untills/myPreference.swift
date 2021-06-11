@@ -21,7 +21,7 @@ class myPreference {
         let data = try! encoder.encode(player)
         let temp : String = String(data: data, encoding: .utf8)!
         UserDefaults.standard.setValue(temp, forKey: key)
-        print("\(player.description) saved in key: \(key)")
+        print("EncodePlayer: \(player.description) saved in key: \(key)")
     }
     
     func decodePlayer (preference_name: String) -> Player? {
@@ -34,11 +34,13 @@ class myPreference {
             let data = Data(safeJsonPlayer.utf8)
             do {
                 let player = try decoder.decode(Player.self, from: data)
+                print("decodePlayer: \(player.description)")
                 return player
             } catch{}
         }
         return nil
     }
+    
     
     func decodeAllPlayers() -> [Player] {
         var players = [Player]()
@@ -46,6 +48,7 @@ class myPreference {
         let dictionary = defaults.dictionaryRepresentation()
         dictionary.keys.forEach { key in
             if(key.contains(playerPreferencePrefix)) {  // recieve players keys
+                let key = key.substring(from: playerPreferencePrefix.length)
                 if let player = decodePlayer(preference_name: key){
                     players.append(player)
                 }
@@ -53,7 +56,7 @@ class myPreference {
         }
         return players
     }
-    
+        
     func deletePlayerRecord(preference_name:String) {
         UserDefaults.standard.removeObject(forKey: playerPreferencePrefix+preference_name)
         print("Player deleted!")
@@ -79,4 +82,27 @@ class myPreference {
         print("All preference deleted!")
     }
     
+    func printAllPlayers() {
+        let defaults = UserDefaults.standard
+        let dictionary = defaults.dictionaryRepresentation()
+        var count = 0
+        print("**************PRINTING ALL PLAYERS:**************)")
+        dictionary.keys.forEach { key in
+            if(key.hasPrefix(playerPreferencePrefix)) {
+                print(defaults.value(forKey: key) ?? "NA")
+                count += 1
+            }
+        }
+        print("total number of records:\(count)")
+    }
+    
+    func printMyPreference() {
+        let defaults = UserDefaults.standard
+        let dictionary = defaults.dictionaryRepresentation()
+        print("**************PRINTING MYPREFERENCE:**************")
+        dictionary.keys.forEach { key in
+            print(defaults.value(forKey: key) ?? "NA")
+        }
+    }
+
 }
