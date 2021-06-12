@@ -40,10 +40,23 @@ class Player : Codable{
         print("\(self.name) location is [\(String(describing: self.lat)),\(String(describing: self.lon))]")
     }
     
-    public var description: String { return "Player:{name: \(String(describing: name)), numberOfMoves: \((strMoves())), GameTime: \(String(describing: self.gameDate)), gameMode: \(String(describing: getGameMode() ?? GAME_MODE.easy))" }
+    private func printLocation() -> String{
+        var strLat = "NA"
+        var strLon = "NA"
+        if lat != nil{
+            strLat = "\(String(describing: self.lat))"
+        }
+        if lon != nil{
+            strLon = "\(String(describing: self.lon))"
+        }
+        return "[\(strLat),\(strLon)]"
+    }
+    
+    public var description: String { return "Player:{name: \(String(describing: name)), numberOfMoves: \((strMoves())), GameTime: \(String(describing: self.gameDate)), gameMode: \(String(describing: getGameMode() ?? GAME_MODE.easy)), location:[\(printLocation())]" }
     }
 
 //Mark: comparable - by game mode then by moves
+//handle BUG!
 extension Player: Comparable {
     static func < (lhs: Player, rhs: Player) -> Bool {
         if lhs.gameMode == rhs.gameMode {

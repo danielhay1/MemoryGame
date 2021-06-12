@@ -27,6 +27,7 @@
 		3DD998562667E83600B69BB9 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD998552667E83600B69BB9 /* Player.swift */; };
 		3DD998582668000800B69BB9 /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD998572668000800B69BB9 /* Extentions.swift */; };
 		3DD9985C2668059B00B69BB9 /* myPreference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD9985B2668059B00B69BB9 /* myPreference.swift */; };
+		3DF30F5A2674E88E00105733 /* AppUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF30F592674E88E00105733 /* AppUtility.swift */; };
 		3DF546BE2646B04600E40C96 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF546BD2646B04600E40C96 /* Card.swift */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +75,7 @@
 		3DD998552667E83600B69BB9 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		3DD998572668000800B69BB9 /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
 		3DD9985B2668059B00B69BB9 /* myPreference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myPreference.swift; sourceTree = "<group>"; };
+		3DF30F592674E88E00105733 /* AppUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtility.swift; sourceTree = "<group>"; };
 		3DF546BD2646B04600E40C96 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -117,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				3DD998572668000800B69BB9 /* Extentions.swift */,
+				3DF30F592674E88E00105733 /* AppUtility.swift */,
 				3DD9985B2668059B00B69BB9 /* myPreference.swift */,
 			);
 			path = untills;
@@ -339,6 +342,7 @@
 			files = (
 				3DD998512667CBE700B69BB9 /* TableViewCell.swift in Sources */,
 				3D8BC3D8263D925900428FF7 /* Program.swift in Sources */,
+				3DF30F5A2674E88E00105733 /* AppUtility.swift in Sources */,
 				3D8BC3A6263D91BC00428FF7 /* MainViewController.swift in Sources */,
 				3DF546BE2646B04600E40C96 /* Card.swift in Sources */,
 				3DD9985C2668059B00B69BB9 /* myPreference.swift in Sources */,

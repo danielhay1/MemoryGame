@@ -27,8 +27,8 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let tags = getAllBtnTags()
-
-
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
         if(!tags.isEmpty) {
             gameManager = GameManager.init(tags: tags ,gameMode: gameMode.rawValue)
             timer = Timer.scheduledTimer(timeInterval:1, target:self, selector:#selector(timerTic), userInfo: nil, repeats: true)
@@ -104,14 +104,17 @@ class GameViewController: UIViewController {
             self.player = player
             self.player!.moves = gameManager.moves
             preference.encodePlayer(player: self.player!, preference_name: preference.currentPlayer)
-            var topTen : [Player] = preference.decodeAllPlayers()
+            var topTen :
+                [Player] = preference.decodeAllPlayers()
             if(topTen.count < 10){
+                print("NEW RECORD!")
                 setPlayerLocation()
                 topTen.append(self.player!)
             } else {
+                print("NEW RECORD!\n\(player) > \(topTen[0].description)")
                 topTen = topTen.sorted()
                 //sort by game mode, then by moves value
-                if(self.player! > topTen[topTen.count-1]) {
+                if(topTen[0] < self.player!) {
                     let key = "\(String(describing: topTen[0].name))_\(String(describing: topTen[0].gameDate))"
                     preference.deletePlayerRecord(preference_name: key)
                     setPlayerLocation()
@@ -176,14 +179,6 @@ class GameViewController: UIViewController {
         /**
          function extend gameboard to 4X5 or 6X4 by the input
          */
-        //TODO: Solve not adding items
-        //Add photos to images btn
-        //Add images to an stackview (vertical)
-        //Set each image tag (first new tag will be 17)
-        //Add the stack view to gameBoard (main stackview)
-        if(colsNum>0) {
-            //self.gameBoard.removeFromSuperview()
-        }
         for _ in 0..<colsNum {
             let stackView = UIStackView()
             stackView.axis = .vertical
@@ -225,8 +220,7 @@ class GameViewController: UIViewController {
     
     //MARK: user location method:
     func setPlayerLocation() {
-        locationManager = CLLocationManager()
-        locationManager.delegate = self
+        print("REQUESTING PLAYER LOCATION...")
         locationManager.requestLocation()
         locationManager.requestWhenInUseAuthorization()
     }
@@ -245,7 +239,7 @@ extension GameViewController: CLLocationManagerDelegate {
             let lat = lastLocation.coordinate.latitude
             let lon = lastLocation.coordinate.longitude
             print("LOCATION MANAGER:\tlocation: [\(lat),\(lon)]")
-            //TODO: Update player location
+            //Update player location
             player?.setLocation(lat: lat, lon: lon)
         }
         savePlayerToPreference()

@@ -17,12 +17,16 @@ class MainViewController: UIViewController {
     
     var preference = myPreference()
     var gameMode = GAME_MODE.easy
+        
     override func viewDidLoad() {
         super.viewDidLoad()
+        let value = UIInterfaceOrientation.landscapeLeft.rawValue
+        UIDevice.current.setValue(value, forKey: "orientation")
+        UINavigationController.attemptRotationToDeviceOrientation()
         //for i in 1...10 {
-        //    automationAddPlayersByTopTenRule(name: "easypizzy_\(i)", moves: 40, gameMode: GAME_MODE.easy.rawValue)
+        //automationAddPlayersByTopTenRule(name: "easypizzy_20", moves: 38, gameMode: GAME_MODE.easy.rawValue)
         //}
-        preference.printAllPlayers()
+        //preference.printAllPlayers()
         //preference.deleteAllPlayersRecord()
         // Do any additional setup after loading the view.
     }
@@ -72,7 +76,6 @@ class MainViewController: UIViewController {
             break;
         }
     }
+
 }
-
-
 
