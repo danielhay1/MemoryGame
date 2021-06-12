@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -29,31 +30,31 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Game time-stamp:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wk4-WD-7mD">
-                                <rect key="frame" x="35" y="60" width="350" height="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game time-stamp:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wk4-WD-7mD">
+                                <rect key="frame" x="35" y="62.5" width="350" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="350" id="OrS-EO-14w"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" name="TextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Player Name:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7w4-Q1-YGY">
-                                <rect key="frame" x="35" y="18" width="300" height="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player Name:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7w4-Q1-YGY">
+                                <rect key="frame" x="35" y="18" width="300" height="19.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="sIj-Hk-b1g"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" name="TextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="25" verticalHuggingPriority="251" ambiguous="YES" restorationIdentifier="recordCell" text="Game mode:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G0q-qx-pwF">
-                                <rect key="frame" x="35" y="40" width="350" height="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="25" verticalHuggingPriority="251" restorationIdentifier="recordCell" text="Game mode:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G0q-qx-pwF">
+                                <rect key="frame" x="35" y="42.5" width="350" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="350" id="Rb6-2O-iK6"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" name="TextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -65,9 +66,9 @@
                             <constraint firstItem="7w4-Q1-YGY" firstAttribute="leading" secondItem="ev7-5c-iso" secondAttribute="leading" constant="35" id="Kxt-Fk-6zQ"/>
                             <constraint firstAttribute="bottom" secondItem="K2F-6q-3gz" secondAttribute="bottom" constant="36" id="NXW-GW-qYc"/>
                             <constraint firstItem="7w4-Q1-YGY" firstAttribute="top" secondItem="ev7-5c-iso" secondAttribute="top" constant="18" id="Q0J-TE-tRP"/>
-                            <constraint firstAttribute="bottom" secondItem="wk4-WD-7mD" secondAttribute="bottom" constant="12" id="TTV-fd-aSf"/>
                             <constraint firstItem="K2F-6q-3gz" firstAttribute="top" secondItem="ev7-5c-iso" secondAttribute="top" constant="36" id="ccy-Cv-jhr"/>
                             <constraint firstItem="K2F-6q-3gz" firstAttribute="leading" secondItem="G0q-qx-pwF" secondAttribute="trailing" constant="10" id="hUo-0h-cNW"/>
+                            <constraint firstAttribute="bottom" secondItem="wk4-WD-7mD" secondAttribute="bottom" constant="9.5" id="lny-rH-8D7"/>
                             <constraint firstItem="wk4-WD-7mD" firstAttribute="leading" secondItem="ev7-5c-iso" secondAttribute="leading" constant="35" id="ocf-bx-4TD"/>
                             <constraint firstItem="wk4-WD-7mD" firstAttribute="top" secondItem="G0q-qx-pwF" secondAttribute="bottom" constant="3" id="skb-ao-doM"/>
                             <constraint firstItem="G0q-qx-pwF" firstAttribute="top" secondItem="7w4-Q1-YGY" secondAttribute="bottom" constant="5" id="tIK-Sk-RTI"/>
@@ -93,6 +94,9 @@
         </tableViewCell>
     </objects>
     <resources>
+        <namedColor name="TextColor">
+            <color red="0.1080000028014183" green="0.1080000028014183" blue="0.1080000028014183" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

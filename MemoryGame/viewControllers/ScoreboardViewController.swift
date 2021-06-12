@@ -59,7 +59,7 @@ class ScoreboardViewController: UIViewController, MKMapViewDelegate {
         let annotation = MKPointAnnotation()
         annotation.coordinate = CLLocationCoordinate2D(latitude: record.lat!, longitude: record.lon!)
         annotation.title = "\(record.name): record"
-        annotation.subtitle = "Game mode:\(String(describing: record.getGameMode())), Moves: \(record.strMoves())"
+        annotation.subtitle = "Game mode:\(String(describing: record.getGameMode() ?? GAME_MODE.easy)), Moves: \(record.strMoves())"
         mapView.addAnnotation(annotation)
         
         print("mapView added marker to record: \(record.name) - location:[\(String(describing: record.lat)),\(String(describing: record.lon))) is setting on map!]")
